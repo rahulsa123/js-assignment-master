@@ -9,11 +9,22 @@ Problem 1
 Endpoint /tour/matches returns all the matches for a given tour name.
 The endpoint latency increases linearly with the number of tours. Modify the endpoint to increase the performance.
 
-Solution: Changed Left join between matches and tour table to inner join to avoid matches table load.
-Added pagination support to decrease latency of endpoint with const MAX_PAGE_SIZE = 5.
+Solution: Changed Left join between matches and tour table to inner join to avoid matches table load and also added colum alias name.
+Added pagination support to decrease latency of endpoint with MAX_PAGE_SIZE = 5.
 
 Problem 2
 Modify the endpoint /sport/tour/match to also return match's id, startTime and format
+
+Solution: in Current code is returning list of matches with match name.
+I changed list of string(matchName) to list dict/hashmap to handle matchId, matchName, matchFormat, matchStartTime.
+eg. {
+                    "matchId": 5,
+                    "matchName": "BLR vs BEN",
+                    "matchFormat": "soccer",
+                    "matchStartTime": "2023-04-29T12:30:00.000Z"
+                }
+i can also convert above data into string format(csv format)
+eg "5,BLR vs BEN,soccer,2023-04-29T12:30:00.000Z"
 
 Problem 3
 Requirement: News Support for Matches and Tours
