@@ -9,6 +9,9 @@ Problem 1
 Endpoint /tour/matches returns all the matches for a given tour name.
 The endpoint latency increases linearly with the number of tours. Modify the endpoint to increase the performance.
 
+Solution: Changed Left join between matches and tour table to inner join to avoid matches table load.
+Added pagination support to decrease latency of endpoint with const MAX_PAGE_SIZE = 5.
+
 Problem 2
 Modify the endpoint /sport/tour/match to also return match's id, startTime and format
 
