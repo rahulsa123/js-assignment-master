@@ -34,6 +34,20 @@ create table if not exists mydb.matches
     createdAt timestamp not null default current_timestamp,
     foreign key (tourId) references tours(id)
 );
+create table if not exists mydb.news
+(
+    id int auto_increment not null primary key,
+    title varchar(50) not null,
+    description varchar(200) not null,
+    sportId int not null,
+    tourId int not null, -- Each news will have tourId because News can be created for a match or a tour
+    matchId int, -- News can exist with matchId
+    recUpdatedAt timestamp not null default current_timestamp on update current_timestamp,
+    createdAt timestamp not null default current_timestamp,
+    foreign key (tourId) references tours(id),
+    foreign key (matchId) references matches(id),
+    foreign key (sportId) references sports(id)
+);
 
 -- seed data
 insert ignore into mydb.sports (id, name) values (1, 'Cricket');
@@ -55,3 +69,7 @@ insert ignore into mydb.matches (name, tourId, format, startTime, endTime) value
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('IND vs WI', 3, 'ODI', '2023-06-12 10:00:00', '2023-06-12 23:00:00');
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('IND vs WI', 3, 'ODI', '2023-06-14 10:00:00', '2023-06-14 23:00:00');
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('KER vs JFC', 4, 'soccer', '2022-04-09 18:00:00', '2022-04-09 23:00:00');
+
+insert ignore into mydb.news(title, description, sportId, tourId, matchId) values("IPL 2023 started with mega matches", "In ipl 2023 GT will play against RCB on 2023-04-09", 1, 1, None)
+insert ignore into mydb.news(title, description, sportId, tourId, matchId) values("IPL 2023 GT VS RCB Result", "In ipl 2023 GT win against RCB with 3 wicket", 1, 1, 1)
+insert ignore into mydb.news(title, description, sportId, tourId, matchId) values("English Premier League, 2022 KER vs JFC", " 2022 KER  3-0 win against JFC ", 2, 4, 11)

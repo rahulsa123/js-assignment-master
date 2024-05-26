@@ -15,7 +15,7 @@ Added pagination support to decrease latency of endpoint with MAX_PAGE_SIZE = 5.
 Problem 2
 Modify the endpoint /sport/tour/match to also return match's id, startTime and format
 
-Solution: in Current code is returning list of matches with match name.
+Solution: in Current code, it is returning list of matches with match name.
 I changed list of string(matchName) to list dict/hashmap to handle matchId, matchName, matchFormat, matchStartTime.
 eg. {
                     "matchId": 5,
@@ -23,7 +23,7 @@ eg. {
                     "matchFormat": "soccer",
                     "matchStartTime": "2023-04-29T12:30:00.000Z"
                 }
-i can also convert above data into string format(csv format)
+i can also convert above data into string format(csv format) if required
 eg "5,BLR vs BEN,soccer,2023-04-29T12:30:00.000Z"
 
 Problem 3
