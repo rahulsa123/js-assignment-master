@@ -43,3 +43,9 @@ News Model
     description: string
 }
 
+Solution: Added Create news table script in .sql file with some seeded data.
+Currently, in all GET endpoint i am throwing Error() on field level check.
+I can replace these error with validation error (if required) which I implemented in POST /news.
+
+
+
